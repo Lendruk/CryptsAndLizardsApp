@@ -1,22 +1,23 @@
 import * as PIXI from 'pixi.js';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { CSSProperties, useEffect, useRef, useState } from 'react';
 import { TileMap } from '../../Types/TileMap';
 import './styles.scss';
 import { TileMapBuilder } from './TileMapBuilder';
 
 type MapViewProps = {
   mapId: string;
+  style?: CSSProperties,
 }
 
 const MAP_PAN_SPEED = 1;
 let pixiApp;
-let holdingRightClick = false;
 
 
 export default function MapView(props: MapViewProps) {
   const tileMap: TileMap = { size: { x: 15, y: 15, z: 0 }, tileSize: 64 };
   let canvasHolder = useRef<HTMLDivElement>(null);
   const [mapScale, setScale] = useState(1);
+  const [holdingRightClick, setHoldingRightClick] = useState(false);
   const [mapPosition, setMapPosition] = useState({ x: 0, y: 0 });
   
   useEffect(() => {
@@ -36,13 +37,13 @@ export default function MapView(props: MapViewProps) {
 
   function handleRightClickDown(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
     if(event.button === 2) {
-      holdingRightClick = true;
+      setHoldingRightClick(true);
     }
   }
 
   function handleRightClickUp(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
     if(event.button === 2) {
-      holdingRightClick = false;
+      setHoldingRightClick(false);
     }
   }
 
@@ -62,7 +63,7 @@ export default function MapView(props: MapViewProps) {
           onMouseDown={mouseEvent => handleRightClickDown(mouseEvent)} 
           onMouseUp={mouseEvent => handleRightClickUp(mouseEvent)}
           onWheel={scrollEvent => handleScroll(scrollEvent)} 
-          className="MapContainer">
+          className="MapContainer" style={props.style}>
       {/* <Stage width={tileMap.size.x * tileMap.tileSize} height={tileMap.size.x * tileMap.tileSize}>
         <Container >
           

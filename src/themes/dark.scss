@@ -1,0 +1,55 @@
+$text-color:  #dbdbdb;
+$primary-background-color: #383838;
+$secondary-background-color: #222222;
+$tertiary-background-color: #2c2c2c;
+$secondary-text-color: #84cafa;
+
+
+.DarkTheme {
+  color: $text-color;
+  .MapEditor {
+
+    .MapEditorContent {
+      background-color: $secondary-background-color;
+    }
+
+    .MapEditBar {
+      background-color: $secondary-background-color;
+      // box-shadow: -1px -1px 8px 0px #00000080;
+
+      .MapEditBarHeader {
+        background-color: $tertiary-background-color;
+        h4 {
+          color: $secondary-text-color;
+        }
+      }
+    }
+
+    .mosaic {
+      background: $primary-background-color;
+      .mosaic-root {
+        .mosaic-tile {
+          margin: 2px;
+        }
+
+        .mosaic-split {
+
+        }
+      }
+
+    }
+
+    .ant-tabs {
+      color: $text-color;
+
+      .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+        color: $secondary-text-color;
+      }
+
+      .ant-tabs-ink-bar {
+        background: $secondary-text-color;
+      }
+    }
+  }
+}
+
