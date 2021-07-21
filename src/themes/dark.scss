@@ -3,10 +3,13 @@ $primary-background-color: #383838;
 $secondary-background-color: #222222;
 $tertiary-background-color: #2c2c2c;
 $secondary-text-color: #84cafa;
+$bright-background-color: white;
 
 
 .DarkTheme {
   color: $text-color;
+  background-color: $primary-background-color;
+
   .MapEditor {
 
     .MapEditorContent {
@@ -29,11 +32,6 @@ $secondary-text-color: #84cafa;
       background: $primary-background-color;
       .mosaic-root {
         .mosaic-tile {
-          margin: 2px;
-        }
-
-        .mosaic-split {
-
         }
       }
 
@@ -49,6 +47,20 @@ $secondary-text-color: #84cafa;
       .ant-tabs-ink-bar {
         background: $secondary-text-color;
       }
+    }
+  }
+
+  .Campaigns {
+    padding: 8px;
+    .CampaignsHeader {
+      h4 {
+        color: $secondary-text-color;
+      }
+    }
+
+    .Campaign {
+      color: $primary-background-color;
+      background: $bright-background-color;
     }
   }
 }

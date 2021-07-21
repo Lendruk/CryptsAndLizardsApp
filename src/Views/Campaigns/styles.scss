@@ -1,0 +1,37 @@
+.Campaigns {
+  padding: 8px;
+  width: 50%;
+  .CampaignsHeader {
+    h4 {
+      font-weight: bold;
+      font-size: 18px;
+    }
+  }
+
+  .CampaignContainer {
+
+    .Campaign {
+      border-radius: 4px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+
+      .CampaignHeader {
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        padding: 20px 10px;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+
+        h5 {
+          font-size: 20px;
+        }
+      }
+
+      .CampaignContent {
+        padding: 10px;
+      }
+    }
+  }
+}

@@ -1,8 +1,7 @@
 import * as PIXI from 'pixi.js';
-import React from 'react';
-import { TileMap } from '../../Types/TileMap';
+import { GameMap } from '../../Types/TileMap';
 
-export const TileMapBuilder = (pixiApp: PIXI.Application, tileMap: TileMap): void => {
+export const TileMapBuilder = (pixiApp: PIXI.Application, tileMap: GameMap): void => {
   const graphics = new PIXI.Graphics();
   console.log('Building tile map');
 

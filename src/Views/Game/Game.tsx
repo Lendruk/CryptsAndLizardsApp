@@ -2,17 +2,17 @@ import { useState } from "react";
 import { Mosaic } from "react-mosaic-component";
 import MapView from "../../Components/MapView/MapView";
 
-type MapDict = {
-  [key: string]: JSX.Element
-}
+// type MapDict = {
+//   [key: string]: JSX.Element
+// }
 
 export default function Game() {
-  const [curMaps, setMaps] = useState({
-    // 'firstMap': <MapView mapId={"testMap1"} />,
-    // 'secondMap': <MapView mapId={"testMap2"} />,
-    // 'thirdMap': <MapView mapId={"testMap3"} />,
-    // 'fourthMap': <MapView mapId={"testMap4"} />
-  } as MapDict)
+  // const [curMaps, setMaps] = useState({
+  //   'firstMap': <MapView mapId={"testMap1"} />,
+  //   'secondMap': <MapView mapId={"testMap2"} />,
+  //   'thirdMap': <MapView mapId={"testMap3"} />,
+  //   'fourthMap': <MapView mapId={"testMap4"} />
+  // } as MapDict)
 
   return (
     <div style={{ height: '100vh' }}>

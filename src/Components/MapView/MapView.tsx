@@ -1,6 +1,6 @@
 import * as PIXI from 'pixi.js';
 import React, { CSSProperties, useEffect, useRef, useState } from 'react';
-import { TileMap } from '../../Types/TileMap';
+import { GameMap } from '../../Types/TileMap';
 import './styles.scss';
 import { TileMapBuilder } from './TileMapBuilder';
 
@@ -14,7 +14,7 @@ let pixiApp;
 
 
 export default function MapView(props: MapViewProps) {
-  const tileMap: TileMap = { size: { x: 15, y: 15, z: 0 }, tileSize: 64 };
+  const tileMap: GameMap = { size: { x: 15, y: 15, z: 0 }, tileSize: 64, assets: { props: [] }, showGrid: true, tileMap: [] };
   let canvasHolder = useRef<HTMLDivElement>(null);
   const [mapScale, setScale] = useState(1);
   const [holdingRightClick, setHoldingRightClick] = useState(false);
