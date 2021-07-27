@@ -63,5 +63,11 @@ $bright-background-color: white;
       background: $bright-background-color;
     }
   }
+
+  .FormContainer {
+    .FormBackground {
+      background: $bright-background-color;
+    }
+  }
 }
 

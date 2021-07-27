@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import MainApp from './Views/MainApp/MainApp';
 import 'antd/dist/antd.css';
+import { Provider } from 'react-redux';
+import store from './Redux/store';
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <App /> */}
-    <MainApp />
+    <Provider store={store}>
+      <MainApp />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
