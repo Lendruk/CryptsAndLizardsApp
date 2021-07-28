@@ -10,22 +10,40 @@ $bright-background-color: white;
   color: $text-color;
   background-color: $primary-background-color;
 
+  a {
+    color: $text-color;
+  }
+
+  .Sidebar {
+    background-color: $secondary-background-color;
+    // box-shadow: -1px -1px 8px 0px #00000080;
+
+    .BarHeader {
+      background-color: $tertiary-background-color;
+      h4 {
+        color: $secondary-text-color;
+      }
+    }
+
+    .BarFooter {
+      color: $secondary-text-color;
+    }
+
+    .NavMode {
+      .selected {
+        color: $secondary-text-color;
+
+        a {
+          color: $secondary-text-color;
+        }
+      }
+    }
+  }
+
   .MapEditor {
 
     .MapEditorContent {
       background-color: $secondary-background-color;
-    }
-
-    .MapEditBar {
-      background-color: $secondary-background-color;
-      // box-shadow: -1px -1px 8px 0px #00000080;
-
-      .MapEditBarHeader {
-        background-color: $tertiary-background-color;
-        h4 {
-          color: $secondary-text-color;
-        }
-      }
     }
 
     .mosaic {

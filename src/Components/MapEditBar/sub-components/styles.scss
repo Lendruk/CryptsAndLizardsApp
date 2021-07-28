@@ -1,0 +1,23 @@
+.NavMode {
+  font-size: 18px;
+
+  .selected {
+    font-weight: bold;
+    border-right: 3px solid;
+  }
+
+  .Route {
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      border-right: 3px solid;
+      transition: 0.05s;
+    }
+
+    span {
+      margin-right: 15px;
+    }
+  }
+}
