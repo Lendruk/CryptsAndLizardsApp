@@ -1,6 +1,9 @@
 import { InfoCircleOutlined, LogoutOutlined } from '@ant-design/icons';
 import UserOutlined from '@ant-design/icons/UserOutlined';
 import { Tabs, Tooltip } from 'antd';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { logout } from '../../Redux/actions';
 import './styles.scss';
 import NavMode from './sub-components/NavMode';
 
@@ -11,6 +14,13 @@ export enum SidebarModes {
 }
 
 export default function Sidebar() {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const logoutAction = () => {
+    dispatch(logout())
+    history.push('/');
+  }
 
   const TabIcon = () => 
   (
@@ -39,7 +49,7 @@ export default function Sidebar() {
           <InfoCircleOutlined />
         </Tooltip>
         <Tooltip title="Logout">
-          <LogoutOutlined />
+          <LogoutOutlined onClick={logoutAction}/>
         </Tooltip>
       </div>
     </div>

@@ -19,6 +19,7 @@ export function example(state = '', action: any) {
 
 export function sessionReducer(state= null, action: ReduxAction<Session>): Session | null {
   if(action.type === TYPES.SET_SESSION) return action.value;
+  if(action.type === TYPES.LOGOUT) return action.value;
   return state;
 }
 
