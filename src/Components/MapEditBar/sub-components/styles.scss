@@ -1,6 +1,5 @@
 .NavMode {
   font-size: 18px;
-  padding-left: 15px;
 
   .selected {
     font-weight: bold;
@@ -8,10 +7,28 @@
   }
 
   .Route {
-    padding: 10px 0px;
     display: flex;
     align-items: center;
     flex-direction: column;
+    user-select: none;
+    cursor: pointer;
+
+    .RouteContent {
+      padding-left: 15px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      display: flex;
+      align-items: center;
+      width: 100%;
+
+      .RouteDisplayText { 
+        flex: 1;
+      }
+      .expand-button {
+        font-size: 12px;
+      }
+    }
+
 
     .BorderOnHover {
       
@@ -26,7 +43,7 @@
     }
 
     .SubRoute {
-      padding: 0px;
+      font-size: 16px;
       padding-left: 33px;
     }
   }

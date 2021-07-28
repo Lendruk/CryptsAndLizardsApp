@@ -41,6 +41,12 @@ $bright-background-color: white;
           color: $secondary-text-color;
         }
       }
+
+      .Route {
+        .SubRouteContent {
+          background: $tertiary-background-color;
+        }
+      }
     }
   }
 

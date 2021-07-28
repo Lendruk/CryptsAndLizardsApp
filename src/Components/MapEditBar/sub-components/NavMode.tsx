@@ -1,4 +1,4 @@
-import { DashboardOutlined, FlagOutlined, ReadOutlined, SettingOutlined } from '@ant-design/icons';
+import { BugOutlined, DashboardOutlined, DownOutlined, FlagOutlined, ReadOutlined, SettingOutlined, UpOutlined } from '@ant-design/icons';
 import { useState } from 'react';
 import { ReactElement } from 'react';
 import { Link } from 'react-router-dom';
@@ -19,10 +19,27 @@ const ROUTES: Route[] = [
     subRoutes: []
   },
   {
-    url: '/campaigns',
+    url: '/games',
+    displayTxt: 'Games',
+    icon: <BugOutlined />,
+    subRoutes: []
+  },
+  {
+    url: null,
     displayTxt: 'Campaigns',
     icon: <FlagOutlined />,
-    subRoutes: []
+    subRoutes: [
+      {
+        displayTxt: 'My Campaigns',
+        url: '/campaigns/me',
+        subRoutes: []
+      },
+      {
+        displayTxt: 'Browse Campaings',
+        url: '/campaigns',
+        subRoutes: []
+      }
+    ]
   },
   {
     url: null,
@@ -52,19 +69,21 @@ const ROUTES: Route[] = [
 
 export default function NavMode() {
   const [selectedRoute, setSelectedRoute] = useState('Dashboard');
+  const [expandedRoutes, setExpandedRoutes] = useState<Set<string>>(new Set());
 
   const RenderRoute = (route: Route, parent?: string) => (
     <div className={`Route ${route.subRoutes.length === 0 ? 'BorderOnHover': ''} ${parent ? 'SubRoute': ''} ${selectedRoute === route.displayTxt ? 'selected' : ''}`}>
-      <section style={{ width: '100%' }}>
+      <section className="RouteContent">
         {route.icon}
         {route.url ? (
           <Link onClick={() => setSelectedRoute(route.displayTxt)} to={route.url}>{route.displayTxt}</Link>
         ): (
-          <span>{route.displayTxt}</span>
+          <span onClick={() => setExpandedRoutes(expandedRoutes.delete(route.displayTxt) ? new Set(expandedRoutes) : new Set(expandedRoutes).add(route.displayTxt))} className="RouteDisplayText">{route.displayTxt}</span>
         )}
+        {route.subRoutes.length > 0 && (expandedRoutes.has(route.displayTxt) ? <UpOutlined className="expand-button" /> : <DownOutlined className="expand-button"/>)}
       </section>
-      {route.subRoutes && (
-        <div style={{ width: '100%' }}>
+      {expandedRoutes.has(route.displayTxt) && route.subRoutes && (
+        <div className="SubRouteContent" style={{ width: '100%' }}>
           {route.subRoutes.map(subRoute => RenderRoute(subRoute, route.displayTxt))}
         </div>
       )}
