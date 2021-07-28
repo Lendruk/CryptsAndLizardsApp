@@ -1,5 +1,6 @@
 .NavMode {
   font-size: 18px;
+  padding-left: 15px;
 
   .selected {
     font-weight: bold;
@@ -7,17 +8,27 @@
   }
 
   .Route {
-    padding: 10px 15px;
+    padding: 10px 0px;
     display: flex;
     align-items: center;
+    flex-direction: column;
 
-    &:hover {
-      border-right: 3px solid;
-      transition: 0.05s;
+    .BorderOnHover {
+      
+      &:hover {
+        border-right: 3px solid;
+        transition: 0.05s;
+      }
     }
 
     span {
       margin-right: 15px;
     }
+
+    .SubRoute {
+      padding: 0px;
+      padding-left: 33px;
+    }
   }
+
 }

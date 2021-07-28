@@ -1,4 +1,4 @@
-@import 'react-mosaic-component/react-mosaic-component.css';
+@import './Styles/react-mosaic.scss';
 // $primary-color: #1890ff; // primary color for all components
 // $link-color: #1890ff; // link color
 // $success-color: #52c41a; // success state color
@@ -41,6 +41,8 @@ code {
   &.column {
     flex-direction: column;
   }
+
+
 }
 
 
