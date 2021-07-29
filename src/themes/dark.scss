@@ -14,6 +14,13 @@ $bright-background-color: white;
     color: $text-color;
   }
 
+  .ListPageHeader {
+    h2 {
+      color: $text-color;
+      font-weight: bold;
+    }
+  }
+
   .MainAppOutPut {
     background-color: $primary-background-color;
   }
@@ -89,6 +96,36 @@ $bright-background-color: white;
     .Campaign {
       color: $primary-background-color;
       background: $bright-background-color;
+    }
+  }
+
+  .ant-table {
+    background: $tertiary-background-color;
+
+    .ant-table-thead {
+      background: $secondary-background-color;
+
+      &> tr > th {
+        background: $secondary-background-color;
+      }
+    }
+
+    .ant-table-cell {
+      color: $text-color;
+    }
+
+  }
+
+  .ant-pagination-item-active {
+    background: $tertiary-background-color;
+    border-color: $secondary-text-color;
+    color: $secondary-text-color;
+  }
+  
+  .ant-pagination {
+    button {
+      background-color: $tertiary-background-color;
+      color: $text-color;
     }
   }
 
