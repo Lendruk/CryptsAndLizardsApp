@@ -3,7 +3,7 @@ import { Form, Input, Button, Checkbox } from 'antd';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import API from '../../Backend/API';
-import { URI_LOGIN } from '../../Backend/entrypoints';
+import { URI_LOGIN } from '../../Backend/endpoints';
 import { setSession } from '../../Redux/actions';
 import { User } from '../../Types/User';
 import './styles.scss';
@@ -24,7 +24,7 @@ export default function Login() {
     console.log('Received values of form: ', values);
     try {
       const res = await API.post<LoginBody, LoginReturns>(URI_LOGIN, { username: values.username, password: values.password });
-      dispatch(setSession({ accessToken: res.accessToken, user: res.user }))
+      dispatch(setSession({ accessToken: `Bearer ${res.accessToken}`, user: res.user }))
       console.log("Logged In");
     } catch(error) {
       console.log(error);

@@ -2,7 +2,7 @@ import { Session } from './store';
 import TYPES from './types';
 
 export type Store = {
-  sessionReducer: ReduxAction<Session>;
+  sessionReducer: Session;
   inGame: ReduxAction<boolean>;
 }
 

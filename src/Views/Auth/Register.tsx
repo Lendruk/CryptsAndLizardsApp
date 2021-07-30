@@ -2,7 +2,7 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { Form, Input, Button } from 'antd';
 import { Link, useHistory } from 'react-router-dom';
 import API from '../../Backend/API';
-import { URI_REGISTER } from '../../Backend/entrypoints';
+import { URI_REGISTER } from '../../Backend/endpoints';
 import './styles.scss';
 
 type RegisterBody = {

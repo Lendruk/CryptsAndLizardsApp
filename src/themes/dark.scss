@@ -13,6 +13,10 @@ $bright-background-color: white;
   a {
     color: $text-color;
   }
+  
+  label {
+    color: $text-color;
+  }
 
   .ListPageHeader {
     h2 {
@@ -99,6 +103,29 @@ $bright-background-color: white;
     }
   }
 
+  .ant-drawer {
+    .ant-drawer-header {
+      .ant-drawer-title {
+        color: $secondary-text-color;
+      }
+      background: $secondary-background-color;
+    }
+    
+    .ant-drawer-content-wrapper {
+      .ant-drawer-content {
+        background-color: $primary-background-color;
+
+        .ant-form-item-label > label {
+          color: $text-color;
+        }
+      }
+    }
+  }
+
+  .ant-form-item {
+    color: $text-color;
+  }
+
   .ant-table {
     background: $tertiary-background-color;
 
@@ -110,10 +137,35 @@ $bright-background-color: white;
       }
     }
 
-    .ant-table-cell {
-      color: $text-color;
+    .ant-table-tbody > tr.ant-table-row:hover > td {
+        background-color: $secondary-background-color;
     }
 
+    .ant-table-row {
+      td {
+        &:hover {
+          background-color: $secondary-background-color !important;
+        }
+      }
+    }
+    
+    .ant-table-row-level-0 {
+      &:hover {
+        background-color: $secondary-background-color !important;
+      }
+    }
+    
+    .ant-table-cell {
+      color: $text-color;
+
+      &:hover {
+        background-color: $primary-background-color;
+      }
+    }
+
+    .ant-empty {
+      color: $text-color;
+    }
   }
 
   .ant-pagination-item-active {
