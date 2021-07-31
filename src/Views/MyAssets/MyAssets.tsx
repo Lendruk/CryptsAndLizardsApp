@@ -137,7 +137,7 @@ export default function MyAssets() {
       render: (text: any, record: AssetPack) => (
         <Space size="middle">
           <Tooltip title="Edit">
-            <Link to={`assets/edit/${record._id}`}><EditOutlined /></Link>
+            <Link to={`/assets/edit/${record._id}`}><EditOutlined /></Link>
           </Tooltip>
           <Tooltip title="Delete">
             <a><DeleteOutlined onClick={() => deletionModal(record._id, record.title)} /></a>

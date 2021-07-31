@@ -17,6 +17,7 @@ import API from '../../Backend/API';
 import { URI_VERIFY_SESSION } from '../../Backend/endpoints';
 import { Session } from '../../Redux/store';
 import { logout } from '../../Redux/actions';
+import AssetPackEdit from '../AssetPackEdit/AssetPackEdit';
 
 export default function MainApp() {
   const session = useSelector<Store, Session>((state) => state.sessionReducer);
@@ -48,6 +49,7 @@ export default function MainApp() {
         <Route exact path="/mapEditor" component={MapEditor} />
         <Route exact path="/campaigns" component={Campaigns} />
         <Route exact path="/assets/me" component={MyAssets} />
+        <Route exact path="/assets/edit/:id" component={AssetPackEdit} />
       </Switch>
     </div>,
     'sidebar': <Sidebar />
