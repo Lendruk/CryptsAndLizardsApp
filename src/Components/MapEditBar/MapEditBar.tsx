@@ -32,7 +32,7 @@ export default function Sidebar() {
   return (
     <div className="Sidebar">
       <section className="BarHeader">
-        <h4>Crypts & Lizards v0.0.1</h4>
+        <h4>Crypts & Lizards v0.1.0</h4>
       </section>
       <div className="BarContent">
         <NavMode />

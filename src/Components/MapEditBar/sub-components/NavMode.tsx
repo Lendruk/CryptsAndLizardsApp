@@ -64,21 +64,28 @@ const ROUTES: Route[] = [
     icon: <SettingOutlined />,
     subRoutes: []
   }
-]
-
+];
 
 export default function NavMode() {
   const [selectedRoute, setSelectedRoute] = useState('Dashboard');
   const [expandedRoutes, setExpandedRoutes] = useState<Set<string>>(new Set());
 
+  const onParentClick = (route: Route) => {
+    setSelectedRoute(route.displayTxt)
+  };
+
+  const onParentWithChildrenClick = (route: Route) => {
+    setExpandedRoutes(expandedRoutes.delete(route.displayTxt) ? new Set(expandedRoutes) : new Set(expandedRoutes).add(route.displayTxt))  
+  }
+
   const RenderRoute = (route: Route, parent?: string) => (
     <div className={`Route ${route.subRoutes.length === 0 ? 'BorderOnHover': ''} ${parent ? 'SubRoute': ''} ${selectedRoute === route.displayTxt ? 'selected' : ''}`}>
-      <section className="RouteContent">
+      <section onClick={() => route.url ? onParentClick(route) : onParentWithChildrenClick(route)} className="RouteContent">
         {route.icon}
         {route.url ? (
-          <Link onClick={() => setSelectedRoute(route.displayTxt)} to={route.url}>{route.displayTxt}</Link>
+          <Link to={route.url}>{route.displayTxt}</Link>
         ): (
-          <span onClick={() => setExpandedRoutes(expandedRoutes.delete(route.displayTxt) ? new Set(expandedRoutes) : new Set(expandedRoutes).add(route.displayTxt))} className="RouteDisplayText">{route.displayTxt}</span>
+          <span className="RouteDisplayText">{route.displayTxt}</span>
         )}
         {route.subRoutes.length > 0 && (expandedRoutes.has(route.displayTxt) ? <UpOutlined className="expand-button" /> : <DownOutlined className="expand-button"/>)}
       </section>
