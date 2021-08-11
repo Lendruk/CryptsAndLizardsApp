@@ -13,6 +13,10 @@ $bright-background-color: white;
   a {
     color: $text-color;
   }
+
+  h1 {
+    color: $text-color;
+  }
   
   label {
     color: $text-color;
@@ -122,6 +126,20 @@ $bright-background-color: white;
     }
   }
 
+  .ant-breadcrumb {
+    .selected {
+      color: $secondary-text-color;
+    }
+
+    span {
+      color: $text-color;
+
+      a {
+        color: $text-color;
+      }
+    }
+  }
+
   .ant-form-item {
     color: $text-color;
   }
@@ -184,6 +202,34 @@ $bright-background-color: white;
   .FormContainer {
     .FormBackground {
       background: $bright-background-color;
+    }
+  }
+
+  .breadcrumb-container {
+    background: $tertiary-background-color;
+
+    .save-button {
+      background: $secondary-background-color;
+      color: $text-color;
+      border-radius: 4px;
+      border: none;
+      font-weight: bold;
+
+      &:hover {
+        color: $secondary-text-color;
+      }
+    }
+  }
+
+  .asset-pack-edit-content {
+    .edit-section {
+      background-color: $secondary-background-color;
+    }
+
+    .ant-form-item-label {
+      label {
+        color: $text-color;
+      }
     }
   }
 }

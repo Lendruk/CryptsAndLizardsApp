@@ -1,5 +1,5 @@
 import './styles.scss';
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Route, Switch, useHistory } from "react-router-dom";
 import Game from "../Game/Game";
 import MapEditor from "../MapEditor/MapEditor";
 import '../../themes/dark.scss';
@@ -21,6 +21,7 @@ import AssetPackEdit from '../AssetPackEdit/AssetPackEdit';
 
 export default function MainApp() {
   const session = useSelector<Store, Session>((state) => state.sessionReducer);
+  const history = useHistory();
   const inGame = useSelector<Store, ReduxAction<boolean>>((state) => state.inGame);
   const dispatch = useDispatch();
   console.log(session);
@@ -32,7 +33,10 @@ export default function MainApp() {
         await API.post<{}, {validSession: boolean}>(URI_VERIFY_SESSION, {});
       } catch {
         dispatch(logout());
+        history.push("/");
       }
+    } else {
+      history.push("/");
     }
   }
 
@@ -56,34 +60,32 @@ export default function MainApp() {
   }
   return (
     <>
-      <BrowserRouter>
-        <div className="Container">
-          <div style={{ width: '100%' }} className="DarkTheme">
-          {session ? (
-            <div style={{ display: 'flex', flexDirection: 'row', width: '100%', height: '100%' }}>
-                <Mosaic<string>
-                    renderTile={(id) => ELEMENT_MAP[id]}
-                    initialValue={{
-                     direction: 'row',
-                      first: 'sidebar',
-                       second: 'content',
-                       splitPercentage: 10,
-                    }}
-                    resize={{ minimumPaneSizePercentage: 3 }}
-                />
+      <div className="Container">
+        <div style={{ width: '100%' }} className="DarkTheme">
+        {session ? (
+          <div style={{ display: 'flex', flexDirection: 'row', width: '100%', height: '100%' }}>
+              <Mosaic<string>
+                  renderTile={(id) => ELEMENT_MAP[id]}
+                  initialValue={{
+                    direction: 'row',
+                    first: 'sidebar',
+                      second: 'content',
+                      splitPercentage: 10,
+                  }}
+                  resize={{ minimumPaneSizePercentage: 3 }}
+              />
 
-            </div>
-          ) : ( 
-            <div className="MainAppOutput">
-              <Switch>
-                <Route exact path="/" component={Login} />
-                <Route exact path="/register" component={Register} />
-              </Switch>
-            </div>
-          )}    
-        </div>
+          </div>
+        ) : ( 
+          <div className="MainAppOutput">
+            <Switch>
+              <Route exact path="/" component={Login} />
+              <Route exact path="/register" component={Register} />
+            </Switch>
+          </div>
+        )}    
+      </div>
   </div>
-  </BrowserRouter>
     </>
   );
 }

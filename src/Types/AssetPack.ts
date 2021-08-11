@@ -6,4 +6,9 @@ export type AssetPack = {
   description: string;
   privacy: AssetPackPrivacy;
   tags: string[];
+  dependencies: AssetPack[];
+}
+
+export type Assets = {
+  
 }

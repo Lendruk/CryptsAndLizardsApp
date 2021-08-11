@@ -1,0 +1,13 @@
+.breadcrumb-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 10px;
+  margin-bottom: 10px;
+
+  .save-button {
+    width: 100px;
+    height: 40px
+  }
+}
