@@ -81,11 +81,10 @@ export default function NavMode() {
   const RenderRoute = (route: Route, parent?: string) => (
     <div className={`Route ${route.subRoutes.length === 0 ? 'BorderOnHover': ''} ${parent ? 'SubRoute': ''} ${selectedRoute === route.displayTxt ? 'selected' : ''}`}>
       <section onClick={() => route.url ? onParentClick(route) : onParentWithChildrenClick(route)} className="RouteContent">
-        {route.icon}
         {route.url ? (
-          <Link to={route.url}>{route.displayTxt}</Link>
+          <Link style={{ width: '100%' }} to={route.url}>{route.icon}{route.displayTxt}</Link>
         ): (
-          <span className="RouteDisplayText">{route.displayTxt}</span>
+          <span className="RouteDisplayText">{route.icon}{route.displayTxt}</span>
         )}
         {route.subRoutes.length > 0 && (expandedRoutes.has(route.displayTxt) ? <UpOutlined className="expand-button" /> : <DownOutlined className="expand-button"/>)}
       </section>
