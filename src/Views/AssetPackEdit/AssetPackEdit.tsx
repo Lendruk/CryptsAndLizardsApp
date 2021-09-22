@@ -6,9 +6,10 @@ import './styles.scss';
 import API from '../../Backend/API';
 import { URI_ASSETS } from '../../Backend/endpoints';
 import Breadcrumb from '../../Components/Breadcrumb/Breadcrumb';
-import { Input, Form, Row, Col, Upload, Table, Tabs, Button } from 'antd';
+import { Input, Form, Row, Col, Upload, Table, Button } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
 import { InboxOutlined } from '@ant-design/icons';
+import Tabs, { Tab } from '../../Components/Tabs/Tabs';
 
 type AssetTab = {
   title: string;
@@ -17,7 +18,26 @@ type AssetTab = {
   content: any;
 }
 
+type TableCol = {
+  title: string;
+  dataIndex: string;
+  key: string;
+}
+
 export default function AssetPackEdit() {
+  function categoriesTab() {
+    const currencyCols = [{
+      title: 'Name',
+      dataIndex: 'name',
+      key: 'name',
+    },
+    {
+      title: 'Parent',
+      dataIndex: 'parent',
+      key: 'parent',
+    }]
+    return renderAssetTab(currencyCols);
+  }
 
   function currenciesTab() {
     const currencyCols = [
@@ -26,20 +46,20 @@ export default function AssetPackEdit() {
         dataIndex: 'name',
         key: 'name',
       },
-      {
-        title: 'Parent',
-        dataIndex: 'parent',
-        key: 'parent',
-      },
     ]
+
+    return renderAssetTab(currencyCols);
+  }
+
+  function renderAssetTab(cols: TableCol[]) {
     return (
       <div>
-        <div className="asset-table-new-btn">
-          <Button>New</Button>
-        </div>
-        <Table columns={currencyCols} dataSource={[{ name: "test", parent: "tst"}]} />
+      <div className="asset-table-new-btn">
+        <Button>New</Button>
       </div>
-    );
+      <Table columns={cols} dataSource={[{ name: "test", parent: "tst"}]} />
+    </div>
+  )
   }
   const POSSIBLE_ASSET_TABS: AssetTab[] = [
     {
@@ -51,8 +71,8 @@ export default function AssetPackEdit() {
     {
       title: "Categories",
       key: "CategoryTab",
-      closable: true,
-      content: "aaa",
+      closable: false,
+      content: categoriesTab(),
     },
     {
       title: "Item Archetypes",
@@ -90,11 +110,16 @@ export default function AssetPackEdit() {
     console.log(e);
   }
 
+  const onRemoveTab = (tab: Tab) => {
+    const updatedTabs = assetTabs.filter(curTab => curTab.key !== tab.key);
+    setAssetTabs(updatedTabs);
+  }
+
   useEffect(() => {
     getAssetPack();
   }, [])
 
-  function Popover(availableTabs: AssetTab[], popoverVisible: boolean, pageX: number, pageY: number) {
+  function Popover(availableTabs: AssetTab[]) {
 
     return (
       <div className="asset-popover">
@@ -144,7 +169,8 @@ export default function AssetPackEdit() {
           <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }} className="edit-section">
             <Col span={24}>
             <h1>Assets</h1>
-            <Tabs
+            <Tabs mode="HORIZONTAL" onRemove={tab => onRemoveTab(tab)} showAdd tabs={assetTabs} />
+            {/* <Tabs
                 type="card"
                 onChange={event => onTabChange(event)}
                 activeKey={activeKey}
@@ -152,11 +178,10 @@ export default function AssetPackEdit() {
               >
                 {assetTabs.map(pane => (
                   <Tabs.TabPane tab={pane.title} key={pane.key} closable={pane.closable}>
-                    {pane.content}
                   </Tabs.TabPane>
                 ))}
                 <Tabs.TabPane disabled tab="Add" />
-              </Tabs>
+              </Tabs> */}
             </Col>
             {/* <Col span={12} >
               <label className="table-header">
@@ -176,7 +201,13 @@ export default function AssetPackEdit() {
           <Row  gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }} className="edit-section">
             <Col span={24}>
             <h1>Items</h1>
-            <Table columns={[]} dataSource={[]} />
+            <Table columns={[
+      {
+        title: 'Name',
+        dataIndex: 'name',
+        key: 'name',
+      },
+    ]} dataSource={[{ name: "test", parent: "tst"}]} />
             </Col>
           </Row>
 

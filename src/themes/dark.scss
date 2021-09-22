@@ -221,6 +221,35 @@ $bright-background-color: white;
     }
   }
 
+  .tabs-container {
+    color: $text-color;
+    border-bottom: 2px solid $tertiary-background-color;
+
+    .add-btn {
+      font-weight: bold;
+    }
+
+    .tab {
+      background-color: $primary-background-color;
+
+      &:hover {
+        background-color: $tertiary-background-color;
+        transition: 0.3s;
+      }
+
+      .anticon {
+        &:hover {
+          font-weight: bold;
+        }
+      }
+    }
+
+    .active-tab {
+      background-color: $tertiary-background-color;
+      color: $secondary-text-color;
+    }
+  }
+
   .asset-pack-edit-content {
     .edit-section {
       background-color: $secondary-background-color;
