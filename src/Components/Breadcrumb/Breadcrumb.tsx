@@ -21,7 +21,7 @@ export default function Breadcrumb(props: BreadCrumbProps) {
         <AntBreadcrumb>
           <AntBreadcrumb.Item><Link to="/"><HomeOutlined /></Link></AntBreadcrumb.Item>
           {props.paths.map((path, index) => (
-            <AntBreadcrumb.Item className={index === props.paths.length -1 ? 'selected' : ''}>{path.url ? <Link to={path.url}>{path.text}</Link> : path.text }</AntBreadcrumb.Item>
+            <AntBreadcrumb.Item key={`bread-item-${path}`} className={index === props.paths.length -1 ? 'selected' : ''}>{path.url ? <Link to={path.url}>{path.text}</Link> : path.text }</AntBreadcrumb.Item>
           ))}
         </AntBreadcrumb>
       </div>

@@ -255,6 +255,12 @@ $bright-background-color: white;
       background-color: $secondary-background-color;
     }
 
+    .asset-section-header {
+      h2 {
+        color: $text-color;
+      }
+    }
+
     .ant-form-item-label {
       label {
         color: $text-color;

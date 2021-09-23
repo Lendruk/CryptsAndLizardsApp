@@ -1,11 +1,18 @@
 .asset-pack-edit-content {
   margin: 0px 20px !important;
 
-  .asset-table-new-btn {
+  .asset-section-header {
     display: flex;
-    justify-content: flex-end;
-    width: 100%;
-    margin-bottom: 15px;
+    width: 100;
+    justify-content: space-between;
+    align-items: center;
+
+    .asset-table-new-btn {
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+      margin-bottom: 15px;
+    }
   }
 
   .edit-section {

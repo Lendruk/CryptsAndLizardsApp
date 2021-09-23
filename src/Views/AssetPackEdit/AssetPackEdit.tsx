@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { AssetPack } from '../../Types/AssetPack';
@@ -6,7 +6,7 @@ import './styles.scss';
 import API from '../../Backend/API';
 import { URI_ASSETS } from '../../Backend/endpoints';
 import Breadcrumb from '../../Components/Breadcrumb/Breadcrumb';
-import { Input, Form, Row, Col, Upload, Table, Button } from 'antd';
+import { Input, Form, Row, Col, Upload, Table, Button, FormInstance } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
 import { InboxOutlined } from '@ant-design/icons';
 import Tabs, { Tab } from '../../Components/Tabs/Tabs';
@@ -26,7 +26,7 @@ type TableCol = {
 
 export default function AssetPackEdit() {
   function categoriesTab() {
-    const currencyCols = [{
+    const categoryCols = [{
       title: 'Name',
       dataIndex: 'name',
       key: 'name',
@@ -36,7 +36,7 @@ export default function AssetPackEdit() {
       dataIndex: 'parent',
       key: 'parent',
     }]
-    return renderAssetTab(currencyCols);
+    return renderAssetTab("Categories", categoryCols);
   }
 
   function currenciesTab() {
@@ -48,14 +48,17 @@ export default function AssetPackEdit() {
       },
     ]
 
-    return renderAssetTab(currencyCols);
+    return renderAssetTab("Currencies", currencyCols);
   }
 
-  function renderAssetTab(cols: TableCol[]) {
+  function renderAssetTab(title: string, cols: TableCol[]) {
     return (
-      <div>
-      <div className="asset-table-new-btn">
-        <Button>New</Button>
+    <div>
+      <div className="asset-section-header">
+        <h2>{title}</h2>
+        <div className="asset-table-new-btn">
+          <Button>New</Button>
+        </div>
       </div>
       <Table columns={cols} dataSource={[{ name: "test", parent: "tst"}]} />
     </div>
@@ -83,15 +86,11 @@ export default function AssetPackEdit() {
   ];
 
   const [assetPack, setAssetPack] = useState({} as AssetPack);
-  const [activeKey, setActiveKey] = useState('CurrencyTab');
   const [assetTabs, setAssetTabs] = useState(POSSIBLE_ASSET_TABS);
   const { id } = useParams<{ id: string }>();
+  const formRef = React.createRef<FormInstance>();
   console.log(id);
 
-  const getAssetPack = async () => {
-    const asset = await API.get<AssetPack>(`${URI_ASSETS}${id}`); 
-    setAssetPack(asset);
-  }
 
   const normFile = (e: any) => {
     console.log('Upload event:', e);
@@ -100,11 +99,6 @@ export default function AssetPackEdit() {
     }
     return e && e.fileList;
   };
-
-  const onTabChange = (key: string) => {
-    console.log('on change')
-    setActiveKey(key);
-  }
 
   const onTabAdd = (e: any) => {
     console.log(e);
@@ -116,6 +110,12 @@ export default function AssetPackEdit() {
   }
 
   useEffect(() => {
+    const getAssetPack = async () => {
+      const asset = await API.get<AssetPack>(`${URI_ASSETS}${id}`); 
+      formRef.current?.setFieldsValue(asset);
+      setAssetPack(asset);
+    }  
+
     getAssetPack();
   }, [])
 
@@ -136,14 +136,15 @@ export default function AssetPackEdit() {
     <div>
       <>
       <Breadcrumb paths={[{ text: "Assets", url: "/assets/me" }, { text: assetPack.title, url: null }]} onSaveAction={() => {}} />
-        <Form className="asset-pack-edit-content" layout="vertical">
+        <Form ref={formRef} className="asset-pack-edit-content" layout="vertical">
           <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }} className="edit-section">
             <Col className="gutter-row" span={12}>
               <Form.Item
                 name="title"
                 label="Title"
+                initialValue={assetPack.title}
               >
-                <Input type="text" placeholder="title" />
+                <Input type="text" onChange={val => setAssetPack({ ...assetPack, title: val.target.value })} placeholder="Title" />
               </Form.Item>
               <Form.Item
                 name="description"
