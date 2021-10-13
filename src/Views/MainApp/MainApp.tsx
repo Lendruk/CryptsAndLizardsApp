@@ -16,7 +16,7 @@ import { useEffect } from 'react';
 import API from '../../Backend/API';
 import { URI_VERIFY_SESSION } from '../../Backend/endpoints';
 import { Session } from '../../Redux/store';
-import { logout } from '../../Redux/actions';
+import { logout, setEditingMap } from '../../Redux/actions';
 import AssetPackEdit from '../AssetPackEdit/AssetPackEdit';
 
 export default function MainApp() {
@@ -25,6 +25,8 @@ export default function MainApp() {
   const inGame = useSelector<Store, ReduxAction<boolean>>((state) => state.inGame);
   const dispatch = useDispatch();
   console.log(session);
+
+  dispatch(setEditingMap(false));
 
   const checkIfSessionValid = async () => {
     console.log("checking if valid", session);
@@ -50,7 +52,7 @@ export default function MainApp() {
       <Switch>
         <Route exact path="/" component={Dashboard} />
         <Route exact path="/game" component={Game} />
-        <Route exact path="/mapEditor" component={MapEditor} />
+        <Route exact path="/mapEditor/:id" component={MapEditor} />
         <Route exact path="/campaigns" component={Campaigns} />
         <Route exact path="/assets/me" component={MyAssets} />
         <Route exact path="/assets/edit/:id" component={AssetPackEdit} />

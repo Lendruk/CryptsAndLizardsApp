@@ -1,7 +1,7 @@
 export type TagColor = 'GREEN' | 'VULCANO' | 'GEEKBLUE';
 
 export type Tag = {
-  id: string;
-  text: string;
+  _id?: string;
+  name: string;
   color?: TagColor;
 }

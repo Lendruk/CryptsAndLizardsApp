@@ -1,0 +1,37 @@
+.toolbox {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  left: 2%;
+  top: 15%;
+  z-index: 1;
+
+  .tool {
+    border-left: 2px solid;
+    border-right: 2px solid;
+    border-bottom: 1px solid;
+    border-top: 1px solid;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:first-child {
+      border-top: 2px solid;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+    }
+
+    &:last-child {
+      border-bottom: 2px solid;
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+    }
+  }
+}

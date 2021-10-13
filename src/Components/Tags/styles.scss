@@ -1,0 +1,35 @@
+.tags {
+  display: flex;
+
+  .tag-input {
+    max-width: 150px;
+    width:auto;
+  }
+
+  .new {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .tag {
+    margin: 5px 10px;
+    padding: 5px;
+
+    .tag-name {
+      // display: flex;
+      // align-items: baseline;
+      // bottom: 2px;
+      // position: relative;
+    }
+
+    .delete-tag {
+      font-size: 12px;
+      margin-left: 5px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}

@@ -124,7 +124,7 @@ export default function MyAssets() {
             }
             return (
               <Tag color={color} key={tag}>
-                {tag.toUpperCase()}
+                {tag.name}
               </Tag>
             );
           })}

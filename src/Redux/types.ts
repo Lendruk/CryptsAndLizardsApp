@@ -3,6 +3,7 @@ const TYPES = {
    SET_SESSION: 'SET_SESSION',
    SET_INGAME: 'SET_INGAME',
    LOGOUT: 'LOGOUT',
+   SET_EDITING_GAME: 'SET_EDITING_GAME'
 }
 
 export default TYPES;

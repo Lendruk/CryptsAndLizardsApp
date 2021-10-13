@@ -27,7 +27,7 @@ export default function Breadcrumb(props: BreadCrumbProps) {
       </div>
       <div>
         {props.onSaveAction && (
-          <Button className="save-button">
+          <Button onClick={props.onSaveAction} className="save-button">
             Save
           </Button>
         )}

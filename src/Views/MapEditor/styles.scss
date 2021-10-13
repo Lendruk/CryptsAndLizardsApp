@@ -1,11 +1,19 @@
 .MapEditor {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   height: inherit;
   .MapEditorContent {
     display: flex;
     border-radius: 8px;
     flex: 1;
+  }
+
+  .map-view-holder {
+    width: 100%;
+  }
+
+  .map-editor-inspector {
+    width: 20%;
   }
 
   .mosaic {

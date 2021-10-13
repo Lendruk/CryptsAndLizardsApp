@@ -4,6 +4,7 @@ import TYPES from './types';
 export type Store = {
   sessionReducer: Session;
   inGame: ReduxAction<boolean>;
+  editingMap: boolean;
 }
 
 
@@ -25,5 +26,10 @@ export function sessionReducer(state= null, action: ReduxAction<Session>): Sessi
 
 export function inGame(state=false, action: ReduxAction<boolean>): boolean | null {
   if(action.type === TYPES.SET_INGAME) return action.value;
+  return state;
+}
+
+export function editingMap(state=false, action: ReduxAction<boolean>): boolean | null {
+  if(action.type === TYPES.SET_EDITING_GAME) return action.value;
   return state;
 }

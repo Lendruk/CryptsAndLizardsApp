@@ -1,3 +1,5 @@
+import { Tag } from "./Tag";
+
 export type AssetPackPrivacy = "PUBLIC" | "PRIVATE" | "TRUSTED";
 
 export type AssetPack = {
@@ -5,7 +7,7 @@ export type AssetPack = {
   title: string;
   description: string;
   privacy: AssetPackPrivacy;
-  tags: string[];
+  tags: Tag[];
   dependencies: AssetPack[];
 }
 
