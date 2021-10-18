@@ -20,22 +20,24 @@ function MapEditorContent() {
     <div className="MapEditor">
       <MapEditorHeader />
       <div style={{ display: 'flex', height: '100%' }}>
-        <Toolbox />
-        <div className="map-view-holder">
-          <MapView style={{ background: 'transparent' }} mapId={"test"} />
+        <div style={{ display: 'flex', width: '100%', position: 'relative' }}>
+          <Toolbox />
+          <div className="map-view-holder">
+            <MapView style={{ background: 'transparent' }} mapId={"test"} />
+          </div>
         </div>
         <div className="map-editor-inspector">
-        <Collapse defaultActiveKey={['1']} onChange={() => {}}>
-          <Panel header="Inspector" key="1">
-            <p>{"text"}</p>
-          </Panel>
-          <Panel header="Settings" key="2">
-            <p>{"text"}</p>
-          </Panel>
-          <Panel header="Layers" key="3">
-            <p>{"text"}</p>
-          </Panel>
-      </Collapse>
+          <Collapse defaultActiveKey={['1']} onChange={() => {}}>
+            <Panel header="Inspector" key="1">
+              <p>{"text"}</p>
+            </Panel>
+            <Panel header="Settings" key="2">
+              <p>{"text"}</p>
+            </Panel>
+            <Panel header="Layers" key="3">
+              <p>{"text"}</p>
+            </Panel>
+          </Collapse>
         </div>
       </div>
     </div>

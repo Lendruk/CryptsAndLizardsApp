@@ -1,7 +1,6 @@
 import { FileOutlined, FilterOutlined, FolderOutlined } from "@ant-design/icons";
 import { Input } from "antd";
 import { Tree, Switch } from 'antd';
-import AssetStructure from "../../AssetStructure/AssetStructure";
 
 const MOCK_DATA = [
   { icon: <FolderOutlined />, title: "test", key: "0", children: [{ isLeaf: true, icon: <FileOutlined /> , title: "sub test", key: "1"}] },
@@ -25,7 +24,6 @@ export default function MapEditMode() {
               treeData={MOCK_DATA} 
               blockNode
         />
-        {/* <AssetStructure files={[{ name: "test!", subAssets: [{ name: "sub test" }]}]} /> */}
       </div>
     </div>
   )

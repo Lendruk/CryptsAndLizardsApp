@@ -75,6 +75,37 @@ $bright-background-color: white;
         background-color: #2c2c2c;
       }
 
+      .zoomer {
+        .zoomer-end {
+          color: $secondary-text-color;
+          border-color: $secondary-background-color;
+          background-color: $tertiary-background-color;
+
+          &:hover {
+            color: $ligher-secondary-text-color;
+            transition: 0.2s;
+            background-color: $primary-background-color;
+          }
+        }
+
+        .selector {
+          border-color: $secondary-background-color;
+          background-color: $tertiary-background-color;
+
+          &:hover {
+            color: $ligher-secondary-text-color;
+            transition: 0.2s;
+            background-color: $primary-background-color;
+          }
+        }
+
+        .line {
+          color: $secondary-text-color;
+          border-color: $secondary-background-color;
+          background-color: $tertiary-background-color;
+        }
+      }
+
       .toolbox {
         color: $secondary-text-color;
         .tool {

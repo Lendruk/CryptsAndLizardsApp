@@ -1,6 +1,7 @@
 import * as PIXI from 'pixi.js';
 import React, { CSSProperties, useEffect, useRef, useState } from 'react';
 import { GameMap } from '../../Types/TileMap';
+import Zoomer from './components/Zoomer';
 import './styles.scss';
 import { TileMapBuilder } from './TileMapBuilder';
 
@@ -31,8 +32,10 @@ export default function MapView(props: MapViewProps) {
   });
 
   function handleScroll(event: React.WheelEvent<HTMLDivElement>) {
-    let newScale = mapScale + (event.deltaY > 0 ? 0.1 : -0.1);
-    setScale(newScale);
+    let newScale = Number.parseFloat((mapScale + (event.deltaY > 0 ? 0.1 : -0.1)).toFixed(2));
+    if(newScale <= 2 && newScale > 0) {
+      setScale(newScale);
+    }
   }
 
   function handleRightClickDown(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
@@ -64,13 +67,8 @@ export default function MapView(props: MapViewProps) {
           onMouseUp={mouseEvent => handleRightClickUp(mouseEvent)}
           onWheel={scrollEvent => handleScroll(scrollEvent)} 
           className="MapContainer" style={props.style}>
-      {/* <Stage width={tileMap.size.x * tileMap.tileSize} height={tileMap.size.x * tileMap.tileSize}>
-        <Container >
-          
-        </Container>
-      </Stage> */}
-      <div ref={canvasHolder} style={{position: 'relative', transform: `scale(${mapScale}) translate(${mapPosition.x}px, ${mapPosition.y}px)`}} id={`map_view_${props.mapId}`}>
-      </div>
+      <Zoomer zoom={Math.round((mapScale * 100))} incrementSize={10} onZoom={(zoom) => setScale(zoom / 100)} />
+      <div ref={canvasHolder} style={{position: 'relative', transform: `scale(${mapScale}) translate(${mapPosition.x}px, ${mapPosition.y}px)`}} id={`map_view_${props.mapId}`} />
     </div>
   )
 }
